@@ -54,6 +54,8 @@ public class TodoService {
 
     public Page<TodoResponse> getTodos(int page, int size, String weather, String startDate, String endDate) {
         Pageable pageable = PageRequest.of(page - 1, size);
+
+        // Level1 - 3: getTodos 조건 검색
         LocalDateTime startDateTime = StringUtils.isEmpty(startDate) ? null : LocalDate.parse(startDate).atStartOfDay();
         LocalDateTime endDateTime = StringUtils.isEmpty(endDate) ? null : LocalDate.parse(endDate).atStartOfDay().plusDays(1);
 
@@ -71,7 +73,8 @@ public class TodoService {
     }
 
     public TodoResponse getTodo(long todoId) {
-        Todo todo = todoRepository.findByIdWithUser(todoId)
+        // Level2 - 8: QueryDSL
+        Todo todo = todoRepository.findByIdWithUserQuery(todoId)
                 .orElseThrow(() -> new InvalidRequestException("Todo not found"));
 
         User user = todo.getUser();
