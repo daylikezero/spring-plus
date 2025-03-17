@@ -1,0 +1,16 @@
+{
+  "adjectives": [
+    "brave", "clever", "happy", "lucky", "mighty", "quick", "swift", "bold", "gentle", "fierce",
+    "calm", "strong", "wise", "shiny", "proud", "noble", "jolly", "witty", "quiet", "fearless",
+    "daring", "bright", "kind", "cool", "sharp", "friendly", "loyal", "silent", "sneaky", "speedy",
+    "charming", "energetic", "playful", "glorious", "fantastic", "cheerful", "radiant", "heroic",
+    "dazzling", "cunning", "serene", "gracious", "valiant", "majestic", "sincere", "lively", "determined"
+
+  ],
+  "nouns": [
+    "tiger", "wolf", "falcon", "phoenix", "dragon", "panda", "hawk", "eagle", "lion", "bear",
+    "fox", "cheetah", "jaguar", "dolphin", "panther", "leopard", "shark", "stallion", "cobra", "owl",
+    "griffin", "pegasus", "raven", "lynx", "gazelle", "otter", "bison", "hedgehog", "orca",
+    "squirrel", "chameleon", "octopus", "meerkat", "salamander", "raccoon", "buffalo", "tortoise", "gecko"
+  ]
+}
