@@ -10,6 +10,9 @@ import org.example.expert.domain.user.dto.response.UserResponse;
 import org.example.expert.domain.user.dto.response.UserUpdateResponse;
 import org.example.expert.domain.user.entity.User;
 import org.example.expert.domain.user.repository.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -78,5 +81,12 @@ public class UserService {
 
     private String getImageKey(String profileUrl) {
         return profileUrl.substring(profileUrl.lastIndexOf("/") + 1);
+    }
+
+    public Page<UserResponse> findUsers(int page, int size, String nickname) {
+        Pageable pageable = PageRequest.of(page - 1, size);
+
+        Page<User> users = userRepository.findAllByNickname(pageable, nickname);
+        return users.map(user -> new UserResponse(user.getId(), user.getEmail()));
     }
 }

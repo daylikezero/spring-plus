@@ -7,6 +7,7 @@ import org.example.expert.domain.user.dto.request.UserUpdateRequest;
 import org.example.expert.domain.user.dto.response.UserResponse;
 import org.example.expert.domain.user.dto.response.UserUpdateResponse;
 import org.example.expert.domain.user.service.UserService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -34,5 +35,13 @@ public class UserController {
                                                          @RequestPart UserUpdateRequest data,
                                                          @RequestPart(required = false) MultipartFile profileImage) {
         return ResponseEntity.ok(userService.updateUser(authUser.getId(), data, profileImage));
+    }
+
+    // Level3 - 13. 대용량 데이터 처리
+    @GetMapping("/users")
+    public ResponseEntity<Page<UserResponse>> findUsers(@RequestParam(defaultValue = "1") int page,
+                                                        @RequestParam(defaultValue = "10") int size,
+                                                        @RequestParam(required = false) String nickname) {
+        return ResponseEntity.ok(userService.findUsers(page, size, nickname));
     }
 }
