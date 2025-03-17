@@ -36,7 +36,7 @@ public class UserController {
                                                          @RequestPart(required = false) MultipartFile profileImage) {
         return ResponseEntity.ok(userService.updateUser(authUser.getId(), data, profileImage));
     }
-
+  
     // Level3 - 13. 대용량 데이터 처리
     @GetMapping("/users")
     public ResponseEntity<Page<UserResponse>> findUsers(@RequestParam(defaultValue = "1") int page,
@@ -44,4 +44,5 @@ public class UserController {
                                                         @RequestParam(required = false) String nickname) {
         return ResponseEntity.ok(userService.findUsers(page, size, nickname));
     }
+
 }

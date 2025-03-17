@@ -89,4 +89,5 @@ public class UserService {
         Page<User> users = userRepository.findAllByNickname(pageable, nickname);
         return users.map(user -> new UserResponse(user.getId(), user.getEmail()));
     }
+
 }
