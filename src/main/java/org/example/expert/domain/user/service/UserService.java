@@ -64,11 +64,11 @@ public class UserService {
                 .orElseThrow(() -> new InvalidRequestException("User not found"));
 
         String nickname = userUpdateRequest.getNickname();
-        if (!StringUtils.isEmpty(nickname)) {
+        if (!profileImage.isEmpty()) {
             user.updateNickname(nickname);
         }
 
-        if (StringUtils.isNotEmpty(profileImage.getName())) {
+        if (profileImage != null && StringUtils.isNotEmpty(profileImage.getName())) {
             // 기존의 프로필 이미지가 있으면 삭제
             if (StringUtils.isNotEmpty(user.getProfileUrl())) {
                 s3Service.delete(getImageKey(user.getProfileUrl()));
