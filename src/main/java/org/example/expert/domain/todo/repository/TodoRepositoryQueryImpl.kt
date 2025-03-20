@@ -8,6 +8,7 @@ import com.querydsl.jpa.impl.JPAQuery
 import com.querydsl.jpa.impl.JPAQueryFactory
 import io.micrometer.common.util.StringUtils
 import lombok.RequiredArgsConstructor
+import org.example.expert.domain.todo.dto.response.QTodoSearchResponse
 import org.example.expert.domain.todo.dto.response.TodoSearchResponse
 import org.example.expert.domain.todo.entity.QTodo.todo
 import org.example.expert.domain.todo.entity.Todo
@@ -40,8 +41,7 @@ class TodoRepositoryQueryImpl(
     ): Page<TodoSearchResponse> {
         // 조회
         val query = findTodosQuery(
-            Projections.constructor(
-                TodoSearchResponse::class.java,
+            QTodoSearchResponse(
                 todo.title,
                 todo.managers.size(),  // 일정 담당자 수
                 todo.comments.size()
