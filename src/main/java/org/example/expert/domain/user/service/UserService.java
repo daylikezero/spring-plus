@@ -82,7 +82,10 @@ public class UserService {
     public Page<UserResponse> findUsers(int page, int size, String nickname) {
         Pageable pageable = PageRequest.of(page - 1, size);
 
+        long start = System.currentTimeMillis();
         Page<User> users = userRepository.findAllByNickname(pageable, nickname);
+        long end = System.currentTimeMillis();
+        System.out.println("task: " + (end - start) + "ms");
         return users.map(user -> new UserResponse(user.getId(), user.getEmail()));
     }
 
