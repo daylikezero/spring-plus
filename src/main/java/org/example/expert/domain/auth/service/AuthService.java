@@ -1,6 +1,5 @@
 package org.example.expert.domain.auth.service;
 
-import io.micrometer.common.util.StringUtils;
 import lombok.RequiredArgsConstructor;
 import org.example.expert.config.JwtUtil;
 import org.example.expert.domain.auth.dto.request.SigninRequest;
@@ -40,7 +39,7 @@ public class AuthService {
         UserRole userRole = UserRole.of(signupRequest.getUserRole());
 
         String profileUrl = null;
-        if (StringUtils.isNotEmpty(profileImage.getName())) {
+        if (!profileImage.isEmpty()) {
             profileUrl = s3Service.upload(profileImage);
         }
 
