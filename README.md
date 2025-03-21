@@ -49,6 +49,58 @@
 ## 🗓️ 개발 기간
 2025.03.10(월) ~ 2025.03.21(금)
 
+## 🧑‍🔬 과제
+### 12. AWS 활용
+* EC2, RDS, S3를 사용하여 프로젝트를 관리하고 배포
+* 각 AWS 서비스 간 보안 그룹을 구성
+  
+![AWS_구조](https://github.com/user-attachments/assets/bf43a150-3ea7-40dc-8ad4-9903a3592e58)
+
+<hr>
+
+### 12-1. EC2
+* 인스턴스 설정
+  * 탄력적 IP 설정
+
+![12-1](https://github.com/user-attachments/assets/27fadfcf-66a7-4368-9d87-0ced9d91a37d)
+
+* EC2 인스턴스 접속 - 서버 가동
+
+![12-1-2](https://github.com/user-attachments/assets/0b056c9f-a01a-4bbf-b8e1-1a7b271c13a8)
+
+* 서버 접속 및 Live 상태 확인 - health check API
+
+![12-1-3](https://github.com/user-attachments/assets/2aba59eb-96b8-4863-b7b9-569a2cb6596a)
+
+<hr>
+
+### 12-2. RDS
+![12-2](https://github.com/user-attachments/assets/4d1736f5-13ed-40ac-a6e3-419c5dd6a4b3)
+
+![12-2-2](https://github.com/user-attachments/assets/c15d223b-9416-4d6a-a5e1-de6855dbd692)
+
+<hr>
+
+### 12-3. S3
+![12-3](https://github.com/user-attachments/assets/010e2f3d-26c0-4374-918f-7ac8099bfe5a)
+
+![12-3-2](https://github.com/user-attachments/assets/931bef68-b466-4052-a6d5-8fc23eb6946f)
+
+<hr>
+
+### 🎬 검증 시나리오
+1. Elastic IP 주소로 접속하여 회원가입<br>
+![image](https://github.com/user-attachments/assets/e4aa3f0b-aacf-48ea-873d-0883da84a05f)
+
+2. RDS 유저 조회 - 프로필 이미지 URI 확인<br>
+![image](https://github.com/user-attachments/assets/9e9ba552-6abf-463f-a65a-bcd0befe9f86)
+
+3. S3 버킷 Object 일치 확인<br>
+![image](https://github.com/user-attachments/assets/e56be4ba-427e-4844-8372-13dc1eaa9850)
+![image](https://github.com/user-attachments/assets/8fcb6ae2-cfbc-4c4c-9808-5570d3ae776f)
+
+
+
 ## ⚙ 개발 환경
 - <img src="https://img.shields.io/badge/Java-007396?&style=for-the-badge&logo=java&logoColor=white" /><img src="https://img.shields.io/badge/gradle-%2302303A.svg?&style=for-the-badge&logo=gradle&logoColor=white" /><img src="https://img.shields.io/badge/spring-%236DB33F.svg?&style=for-the-badge&logo=spring&logoColor=white" /><img src="https://img.shields.io/badge/mysql-%234479A1.svg?&style=for-the-badge&logo=mysql&logoColor=white" />
 - <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" /><img src="https://img.shields.io/badge/Kotlin-0095D5?&style=for-the-badge&logo=kotlin&logoColor=white" />
