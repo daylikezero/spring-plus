@@ -1,13 +1,18 @@
 package org.example.expert.domain.user.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.expert.domain.common.annotation.Auth;
 import org.example.expert.domain.common.dto.AuthUser;
 import org.example.expert.domain.user.dto.request.UserChangePasswordRequest;
+import org.example.expert.domain.user.dto.request.UserUpdateRequest;
 import org.example.expert.domain.user.dto.response.UserResponse;
+import org.example.expert.domain.user.dto.response.UserUpdateResponse;
 import org.example.expert.domain.user.service.UserService;
+import org.springframework.data.domain.Page;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,7 +26,22 @@ public class UserController {
     }
 
     @PutMapping("/users")
-    public void changePassword(@Auth AuthUser authUser, @RequestBody UserChangePasswordRequest userChangePasswordRequest) {
+    public void changePassword(@AuthenticationPrincipal AuthUser authUser, @RequestBody UserChangePasswordRequest userChangePasswordRequest) {
         userService.changePassword(authUser.getId(), userChangePasswordRequest);
+    }
+
+    @PatchMapping(path = "/users", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
+    public ResponseEntity<UserUpdateResponse> updateUser(@AuthenticationPrincipal AuthUser authUser,
+                                                         @RequestPart UserUpdateRequest data,
+                                                         @RequestPart(required = false) MultipartFile profileImage) {
+        return ResponseEntity.ok(userService.updateUser(authUser.getId(), data, profileImage));
+    }
+
+    // Level3 - 13. 대용량 데이터 처리
+    @GetMapping("/users")
+    public ResponseEntity<Page<UserResponse>> findUsers(@RequestParam(defaultValue = "1") int page,
+                                                        @RequestParam(defaultValue = "10") int size,
+                                                        @RequestParam(required = false) String nickname) {
+        return ResponseEntity.ok(userService.findUsers(page, size, nickname));
     }
 }
